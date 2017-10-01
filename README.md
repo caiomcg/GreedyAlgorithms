@@ -1,0 +1,2 @@
+# GreedyAlgorithms
+Greedy algorithms implementation
