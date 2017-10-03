@@ -21,7 +21,6 @@ int main(int argc, char** argv) {
 
     std::clog << "Dijkstra - Node: " << node->getName() << " - path sum: " << node->getWeight() << std::endl;
 
-
     delete graph;
     delete dijkstra;
     return 0;

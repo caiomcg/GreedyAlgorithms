@@ -8,15 +8,10 @@
 Dijkstra::~Dijkstra() {}
 
 std::vector<std::string> Dijkstra::solve(Graph* graph) {
-    std::vector<std::vector<Node*> > node_tree;
-
     auto nodes = graph->getAllNodes();
     
-    Node* base_node = nodes.at(0);
-    base_node->setWeight(0);
-
-    Node* current_node  = base_node;
-    Node* previous_node = base_node;
+    Node* current_node = nodes.at(0);
+    current_node->setWeight(0);
     Node* end_node  = nodes.at(nodes.size() - 1);
 
     while (current_node != nullptr) {
