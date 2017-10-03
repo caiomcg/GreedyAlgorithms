@@ -1,6 +1,7 @@
 #include "Greedy.h"
 
 #include <map>
+#include <climits>
 #include <string>
 
 class Dijkstra : public Greedy {

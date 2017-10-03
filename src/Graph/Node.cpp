@@ -1,10 +1,9 @@
 #include "Node.h"
-#include <iostream>
 
 Node::Node(const std::string& name) {
     this->name_ = name;
     this->visited_ = false;
-    this->weight_ = -1;
+    this->weight_ = LONG_MAX;
 }
 
 void Node::addNeighbor(Node* node, const long weight) {
@@ -36,6 +35,5 @@ void Node::setWeight(long weight) {
 }
 
 bool Node::operator==(const Node& other) {
-    std::clog << "Comparing" << std::endl;
     return this->name_ == other.name_;
 }

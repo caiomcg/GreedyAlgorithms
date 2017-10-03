@@ -1,5 +1,10 @@
 #include "Dijkstra.h"
 
+/* 4
+23 17 19
+22 20
+25 */
+
 Dijkstra::~Dijkstra() {}
 
 std::vector<std::string> Dijkstra::solve(Graph* graph) {
@@ -23,21 +28,19 @@ std::vector<std::string> Dijkstra::solve(Graph* graph) {
             for (auto& child : childs) {
                 if (!child.first->beenVisited()) {
                     long new_weight =  current_node->getWeight() + child.second;
-                    if (child.first->getWeight() < new_weight) {
+                    
+                    if (child.first->getWeight() > new_weight) {
                         child.first->setWeight(new_weight);
                     }
                 }
-
-                
                 weights.push_back(child.first->getWeight());
             }
-            std::clog << "Node: " << current_node->getName() << " - " << current_node->beenVisited() << std::endl;
             current_node->changeState(true);
-            std::clog << "Node: " << current_node->getName() << " - " << current_node->beenVisited() << std::endl;
         }
+
         if (weights.size() != 0) {
             current_node = nullptr;
-            long min_weight = -1;
+            long min_weight = LONG_MAX;
 
             for (auto node : nodes) {
                 if (!node->beenVisited() && node->getWeight() != -1) {
@@ -48,8 +51,6 @@ std::vector<std::string> Dijkstra::solve(Graph* graph) {
                 }
             }
         }   
-        //std::clog << "Current Node: " << current_node->getName() << " - " << current_node->getWeight() << std::endl;
-        
     }
     return std::vector<std::string>{end_node->getName()};
 }

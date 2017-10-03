@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     auto result = dijkstra->solve(graph);
     Node* node  = graph->getNode(result[0]);
 
-    std::clog << "Dijkstra - Node: " << node->getName() << " - " << node->getWeight() << std::endl;
+    std::clog << "Dijkstra - Node: " << node->getName() << " - path sum: " << node->getWeight() << std::endl;
 
 
     delete graph;
