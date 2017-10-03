@@ -10,7 +10,17 @@
 // 3 17 22 00 25 
 // 4 19 20 25 00 
 
+void usage(void) {
+    std::clog << "Greedy [FILE]" << std::endl;
+}
+
 int main(int argc, char** argv) {
+
+    if (argc < 2) {
+        usage();
+        return 1;
+    }
+
     InputReader input{argv[1]};
 
     Graph* graph = input.createGraph();
