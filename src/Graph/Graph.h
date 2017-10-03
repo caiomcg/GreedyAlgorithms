@@ -7,11 +7,12 @@
 
 class Graph {
 private: 
-    std::vector<Node*> nodes;
+    std::vector<Node*> nodes_;
 public:
     Graph();
     void addNode(const std::string& name);
     void addNode(Node* node);
     void addNeighbor(const std::string& node_name, const std::string& neighbors_name, long weight);
     Node* getNode(const std::string& name);
+    std::vector<Node*> getAllNodes();
 };

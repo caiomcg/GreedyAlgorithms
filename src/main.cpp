@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "Dijkstra.h"
 #include "Graph.h"
 #include "InputReader.h"
 
@@ -10,20 +12,17 @@
 
 int main(int argc, char** argv) {
     InputReader input{argv[1]};
-    Graph* graph = input.createGraph();
 
-    Node* node = graph->getNode("2");
-    if (node != nullptr) {
-        for (auto node_info : node->getNeighbors()) {
-            std::clog << "2 - [" << node_info.first->getName() << ", " << node_info.second << "]" << std::endl;
-            for (auto node_child_info : node_info.first->getNeighbors()) {
-                std::clog << "\t" << node_info.first->getName() << " - [" << node_child_info.first->getName() << ", " << node_child_info.second << "]" << std::endl;
-            }
-        }
-    } else {
-        std::clog << "No NOde";
-    }
-    
-    delete node;
+    Graph* graph = input.createGraph();
+    Dijkstra* dijkstra = new Dijkstra();
+
+    auto result = dijkstra->solve(graph);
+    Node* node  = graph->getNode(result[0]);
+
+    std::clog << "Dijkstra - Node: " << node->getName() << " - " << node->getWeight() << std::endl;
+
+
+    delete graph;
+    delete dijkstra;
     return 0;
 }
