@@ -34,6 +34,11 @@ void Node::setWeight(long weight) {
     this->weight_ = weight;
 }
 
+void Node::reset() {
+    this->visited_ = false;
+    this->weight_ = LONG_MAX;
+}
+
 bool Node::operator==(const Node& other) {
     return this->name_ == other.name_;
 }

@@ -55,5 +55,7 @@ public:
     long getWeight();
     void setWeight(long weight);
 
+    void reset();
+
     bool operator==(const Node& other);
 };

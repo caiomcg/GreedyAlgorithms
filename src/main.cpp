@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Dijkstra.h"
+#include "Prim.h"
 #include "Graph.h"
 #include "InputReader.h"
 
@@ -24,6 +25,21 @@ int main(int argc, char** argv) {
     InputReader input{argv[1]};
 
     Graph* graph = input.createGraph();
+
+    Prim* prim = new Prim();
+
+    auto prim_result = prim->solve(graph);
+    long sum = 0;
+    for (auto name : prim_result) {
+        sum += graph->getNode(name)->getWeight();
+    }
+    std::clog << "Prim (MST) - path sum: " << sum << std::endl;
+
+
+    for (auto node : graph->getAllNodes()) {
+        node->reset();  
+    }
+
     Dijkstra* dijkstra = new Dijkstra();
 
     auto result = dijkstra->solve(graph);
@@ -32,6 +48,7 @@ int main(int argc, char** argv) {
     std::clog << "Dijkstra - Node: " << node->getName() << " - path sum: " << node->getWeight() << std::endl;
 
     delete graph;
+    delete prim;
     delete dijkstra;
     return 0;
 }
