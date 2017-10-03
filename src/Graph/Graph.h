@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Node.h"
-
+#include <iostream>
 #include <string>
 #include <vector>
 

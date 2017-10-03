@@ -1,8 +1,6 @@
 #include "Graph.h"
 
-Graph::Graph() {
-
-}
+Graph::Graph() {}
 
 void Graph::addNode(const std::string& name) {
     this->nodes.push_back(new Node(name));
